@@ -1,0 +1,47 @@
+wp0:
+  status: frozen_reference
+  eft:
+    metric: g
+    scalar_mode: phi
+    action:
+      gravity: Einstein-Hilbert
+      kinetic_phi: canonical
+      potential: V0 + 1/2 nu2 phi^2 + lambda4/4 phi^4
+      dark_coupling: conformal
+      beta_phi: beta0 * phi / Mpl
+  matter_couplings:
+    baryons: minimal_to_g
+    radiation: minimal_to_g
+    cdm: conformal_to_phi_metric
+  principles:
+    radiative_blocking: true
+    lambdaCDM_limit: true
+  perturbations:
+    dynamic_coupling: beta0 * phi_prime * rho_c
+    mu_k_a: 1 + 2 beta0^2 k^2 / (k^2 + a^2 m_eff^2)
+    primordial_normalization:
+      As: 2.1e-9
+  active_parameters:
+    - beta0
+    - nu2
+    - x_ini
+    - h
+    - omega_b
+    - omega_c
+  defaults:
+    lambda4: 0.0
+    geometry: flat
+  datasets:
+    background:
+      - Pantheon+
+      - DESI_DR2_BAO_compressed
+    growth:
+      - Gold2017_diag
+      - eBOSS_DR16_compressed_proxy
+  validation:
+    max_rel_D: <1e-2
+    max_rel_f: <1e-2
+    sigma8_pred: ~0.8
+    z_eq: ~3400
+    rd_mpc: ~148
+    rhat: <1.05

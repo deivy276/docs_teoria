@@ -1,0 +1,95 @@
+wp: WP1
+title: Cierre cinemático del contenido de grados de libertad de la TUO
+status: approved_as_ir_kinematic_hypothesis
+objective: >-
+  Fijar los grados de libertad físicos de la TUO en el régimen cosmológico
+  infrarrojo y separar claramente el contenido físico propagante del contenido
+  tensorial subyacente aún no cerrado.
+
+ir_field_content:
+  metric_g_mu_nu:
+    role: gravitational_metric
+    propagating_dof: 2
+  phi:
+    role: effective_scalar_mode_of_the_fabric
+    propagating_dof: 1
+  A_mu_nu:
+    role: parent_tensorial_structure
+    decomposition: "A_mu_nu = (1/4) phi g_mu_nu + Ahat_mu_nu"
+    tracefree_sector_Ahat:
+      status_in_ir: non_propagating_hypothesis
+      interpretation:
+        - auxiliary
+        - gauge
+        - heavy
+
+doF_count_ir:
+  tensor_GR: 2
+  scalar_fabric: 1
+  total: 3
+
+working_route:
+  adopted: scalar_tensor_ir_completion
+  not_adopted: full_massive_spin2_completion
+  reason: >-
+    El simulador y los ajustes observacionales actuales solo requieren un modo
+    escalar extra ligero; no existe evidencia cosmológica actual de que deban
+    propagarse cinco grados de libertad tensoriales masivos adicionales.
+
+symmetry_guidance:
+  framework: TDiff_or_WTDiff_motivated_or_equivalent_scalar_tensor_reduction
+  statement: >-
+    La completion futura deberá poseer una estructura de simetría y
+    restricciones compatible con que solo sobreviva un modo escalar físico en IR.
+
+frozen_ir_action_reference: >-
+  S_eff = ∫ sqrt(-g) [ M_Pl^2/2 R - 1/2 (∇phi)^2 - V(phi) ]
+  + S_b[g] + S_r[g] + S_c[e^{2 beta(phi)} g]
+
+material_couplings:
+  baryons:
+    coupling: minimal_to_g
+  radiation:
+    coupling: minimal_to_g
+  cdm:
+    coupling: conformal_to_phi
+    metric: "gtilde_c = exp(2 beta(phi)) g"
+    minimal_beta: "beta(phi)=beta0*phi/M_Pl"
+
+growth_interpretation:
+  interaction_channel: "Q proportional to beta0 * phi'(N) * rho_c"
+  effective_gravity: "mu(k,a)=1 + 2 beta0^2 k^2 / (k^2 + a^2 m_eff^2(a))"
+  physical_meaning: >-
+    El crecimiento lineal se interpreta como la respuesta de la materia oscura a
+    un único modo escalar efectivo del tejido.
+
+closed_by_wp1:
+  - physical_ir_dof_count
+  - interpretation_of_phi_as_unique_light_extra_mode
+  - non_propagating_status_of_tracefree_tensor_sector_in_ir
+  - scalar_tensor_ir_reading_of_current_tuo
+
+not_closed_by_wp1:
+  - full_tensorial_uv_parent_theory
+  - ghost_free_proof
+  - hamiltonian_constraint_analysis
+  - exact_status_of_Ahat_mu_nu
+  - full_spin2_completion
+
+success_criteria:
+  - unambiguous_ir_dof_count
+  - explicit_ir_role_of_phi
+  - explicit_nonpropagating_hypothesis_for_Ahat
+  - clean_handoff_to_wp2
+
+handoff_to_wp2:
+  main_question: >-
+    ¿Puede esta estructura cinemática cerrarse como teoría sin fantasmas y con
+    Hamiltoniano bien definido?
+  closure_options:
+    A: >-
+      Demostrar que la formulación tensorial subyacente posee restricciones
+      suficientes para eliminar modos patológicos y dejar solo phi en IR.
+    B: >-
+      Declarar a la TUO como teoría escalar-tensorial fundamental en el régimen
+      cosmológico, renunciando a un espín-2 extra propagante.
