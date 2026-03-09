@@ -1,0 +1,66 @@
+wp: WP3
+title: "Derivación del acoplamiento oscuro desde la acción"
+status: frozen_reference
+layer: cosmological_EFT
+
+reference_action:
+  frame: Einstein
+  action: |
+    S = ∫ d^4x √(-g) [ M_Pl^2 R / 2 - 1/2 (∂φ)^2 - V(φ) ]
+        + S_b[g,ψ_b] + S_r[g,ψ_r] + S_c[ĝ_c,ψ_c]
+
+dark_metric:
+  form: conformal
+  metric: "g_tilde_c = C(φ)^2 g"
+  C_phi: "exp(beta(phi))"
+  beta_phi_reference: "beta(phi) = beta0 * phi / M_Pl"
+  alpha_phi_reference: "alpha(phi) = d ln C / dφ = beta0 / M_Pl"
+
+sector_assignments:
+  baryons:
+    coupled_to: g
+    conserved_separately: true
+  radiation:
+    coupled_to: g
+    conserved_separately: true
+  cdm:
+    coupled_to: g_tilde_c
+    conserved_separately: false
+
+equations:
+  scalar_eom_covariant: "□φ - V_,φ = alpha(φ) T_c"
+  dark_conservation_covariant: "∇_μ T_c^{μν} = - alpha(φ) T_c ∇^ν φ"
+  total_conservation: "∇_μ(T_b + T_r + T_c + T_φ) = 0"
+
+flrw:
+  scalar_eom: "φ¨ + 3H φ˙ + V_,φ = alpha(φ) ρ_c"
+  dark_continuity: "ρ_c˙ + 3H ρ_c = -Q"
+  Q_general: "Q = alpha(φ) φ˙ ρ_c"
+  variable_definitions:
+    x: "φ / M_Pl"
+    N: "ln a"
+    y: "dx/dN"
+    phi_dot: "H M_Pl y"
+  Q_reference: "Q = beta0 H y ρ_c"
+
+radiation_locking:
+  trace_formula: "T = -ρ + 3P"
+  radiation_trace: "T_r = 0"
+  consequence: "During radiation domination, radiation does not source φ; Hubble friction freezes φ and Q ≈ 0."
+
+frozen_decisions:
+  - "Use purely conformal dark coupling in the reference EFT."
+  - "Use beta(phi) = beta0 * phi / M_Pl as the reference coupling function."
+  - "Replace heuristic tanh activation by the dynamical coupling Q = beta0 H y ρ_c."
+  - "Adopt trace-based covariant explanation of radiation locking."
+
+not_closed_yet:
+  - "Microphysical origin of the dark-only coupling."
+  - "Possible disformal extensions."
+  - "UV completion of the coupling sector."
+  - "Fundamental derivation of beta(phi)."
+
+official_result:
+  statement_1: "Dark coupling is now derived covariantly from the action in the IR EFT."
+  statement_2: "Reference interaction term is Q = beta0 H y rho_c."
+  statement_3: "Radiation locking is a covariant consequence of T_r = 0, not a phenomenological patch."

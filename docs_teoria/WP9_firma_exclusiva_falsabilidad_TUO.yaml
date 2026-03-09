@@ -1,0 +1,108 @@
+wp: WP9
+status: frozen
+name: "Firma exclusiva y falsabilidad de la TUO"
+purpose: >
+  Definir las firmas observacionales mínimas de la TUO y establecer criterios
+  explícitos de falsación para la rama escalar–tensorial cosmológica mínima.
+
+hypotheses:
+  H9_1: "La TUO mínima es una EFT escalar–tensorial del sector oscuro."
+  H9_2: "El sector tensorial infrarrojo coincide con GR: c_T=1, alpha_T=0."
+  H9_3: "Growth y lensing quedan correlacionados por la misma dinámica del tejido."
+  H9_4: "LambdaCDM es un límite de la TUO, no una negación automática de la teoría."
+
+minimal_branch:
+  action_reference: "WP0-WP8 EFT"
+  coupling: "Q = beta0 * H * y * rho_c"
+  effective_gravity:
+    mu: "1 + 2 beta0^2 k^2 / (k^2 + a^2 m_eff^2)"
+    eta: 1
+    Sigma_equals_mu: true
+  tensor_sector:
+    c_T: 1
+    alpha_T: 0
+
+primary_observables:
+  background:
+    - H(z)
+    - D_M(z)
+    - D_H(z)
+    - D_V(z)
+    - r_d
+  growth:
+    - D(z)
+    - f(z)
+    - f_sigma8(z)
+    - sigma8
+  lensing:
+    - S8
+    - Sigma(k,a)
+  tensor:
+    - c_T
+    - alpha_T
+
+null_tests:
+  NT1:
+    name: "No-slip minimal"
+    condition: "eta(k,a) = 1"
+    falsifies_if: "Data require eta != 1 robustly in the regime of interest."
+  NT2:
+    name: "Growth-lensing consistency"
+    condition: "Sigma(k,a) = mu(k,a)"
+    falsifies_if: "Growth and lensing require incompatible modifications."
+  NT3:
+    name: "Early-universe protection"
+    condition: "f_TUO(z_star) << 1 and early acoustic sector preserved"
+    falsifies_if: "Any viable late-time fit destroys r_d, z_eq, or recombination physics."
+  NT4:
+    name: "Tensorial standard sector"
+    condition: "c_T=1 and alpha_T=0"
+    falsifies_if: "Observed tensor propagation robustly departs from GR in the minimal branch."
+
+falsification_levels:
+  F1: "Parametric region falsified"
+  F2: "Collapse to LambdaCDM limit (distinctivity lost, not full falsation)"
+  F3: "Minimal scalar-tensor branch falsified"
+  F4: "Current EFT framework falsified"
+
+decision_scenarios:
+  A: "Support for minimal TUO"
+  B: "Collapse to LambdaCDM"
+  C: "Minimal branch falsified"
+  D: "Extended TUO branch required"
+
+predictions:
+  P1: "Correlated late-time modification of growth and weak lensing."
+  P2: "Scale dependence in growth through mu(k,a)."
+  P3: "Overconstrained relation between background, growth and lensing."
+
+datasets_priority:
+  minimum:
+    - Pantheon+
+    - DESI_BAO
+    - RSD_fsigma8
+    - weak_lensing_DES_KiDS_Euclid
+  advanced:
+    - CMB_lensing
+    - full_shape_clustering
+    - GW_cosmology
+
+metrics:
+  - delta_chi2
+  - delta_AIC
+  - delta_BIC
+  - sector_posterior_comparison_beta_sign
+  - Rhat
+
+deliverables:
+  D9_1: "Documento de firma exclusiva mínima"
+  D9_2: "Tabla de falsación por ramas"
+  D9_3: "Mapa de decisión observacional"
+  D9_4: "Formulario estándar de lectura honesta de resultados"
+
+official_statement: >
+  La TUO mínima solo puede considerarse físicamente distintiva si produce una
+  modificación observacional coherente y falsable del crecimiento y/o del weak
+  lensing, manteniendo intacto el universo temprano y sin contradecir el sector
+  tensorial estándar. Si los datos la empujan sistemáticamente a beta0 -> 0,
+  sobrevive solo como generalización formal de LambdaCDM.

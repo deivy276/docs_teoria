@@ -1,0 +1,152 @@
+wp: WP5
+name: Einstein_Boltzmann_complete_implementation_TUO
+status: frozen_reference_implementation_specification
+objective: >
+  Elevar la TUO desde una EFT cosmológica con módulos de background y growth comprimido
+  a una teoría lineal relativista completa capaz de producir CMB, lensing CMB,
+  transferencias, P(k,z), fσ8(z), BAO full-shape y observables derivados.
+
+scope:
+  covers:
+    - linear_relativistic_perturbations
+    - CMB_anisotropies
+    - CMB_lensing
+    - matter_power_spectrum
+    - BAO_linear_and_compressed
+    - RSD_linear
+  excludes:
+    - non_linear_LSS
+    - halo_model
+    - nonlinear_bias
+    - compact_objects
+    - gravitational_wave_sector_beyond_GR_baseline
+
+input_theory:
+  effective_action: >
+    S_eff = ∫ √-g [ M_Pl^2/2 R - 1/2 (∂φ)^2 - V(φ) ] + S_b[g] + S_r[g] + S_c[e^{2β(φ)}g]
+  beta_phi: "beta(phi) = beta0 * phi / M_Pl"
+  potential: "V(phi) = V0 + 1/2 nu2 phi^2 + (lambda4/4) phi^4"
+  primordial_sector: WP4_frozen_reference
+
+dynamical_variables:
+  background:
+    - a
+    - H
+    - phi
+    - phi_prime
+    - rho_b
+    - rho_c
+    - rho_gamma
+    - rho_nu
+  scalar_perturbations_reference_gauge:
+    - Phi
+    - Psi
+    - delta_b
+    - theta_b
+    - delta_c
+    - theta_c
+    - delta_gamma
+    - theta_gamma
+    - delta_nu
+    - theta_nu
+    - sigma_nu
+    - delta_phi
+    - delta_phi_prime
+  tensor_sector:
+    status: frozen_as_GR_like_in_this_stage
+    variables:
+      - h_TT
+
+gauge:
+  theoretical_reference: Newtonian
+  implementation_allowed:
+    - Newtonian
+    - synchronous
+  requirement: gauge_invariant_consistency_against_LCDM_limit
+
+dark_coupling:
+  covariant_form: "∇_μ T^(c)μν = - α(phi) T_c ∇^ν phi"
+  background_form: "Q = α(phi) dot(phi) rho_c"
+  code_form: "Q = beta0 * H * y * rho_c"
+  heuristic_tanh_allowed: false
+
+scale_dependent_gravity:
+  formula: "mu(k,a) = 1 + 2 beta0^2 k^2 / (k^2 + a^2 m_eff^2(a))"
+  meff2: "m_eff^2 = V_phiphi"
+  interpretation:
+    screened_regime: "k^2 << a^2 m_eff^2"
+    unscreened_regime: "k^2 >> a^2 m_eff^2"
+
+required_modules:
+  - background_module
+  - thermodynamics_module_with_TUO_background
+  - primordial_module
+  - perturbations_module
+  - transfer_module
+  - spectra_module
+  - likelihood_interface
+
+preferred_implementation_strategy:
+  route: CLASS_fork_or_equivalent
+  rationale:
+    - preserves_standard_thermodynamics
+    - preserves_neutrino_and_reionization_infrastructure
+    - enables_direct_LCDM_regression
+
+validation:
+  background:
+    - H_of_z
+    - rd
+    - zeq
+    - DM_DH_DV
+  growth:
+    - D_of_z
+    - f_of_z
+    - fsigma8_of_z
+    - sigma8_0
+  cmb:
+    condition: "relative agreement with LCDM reference below project epsilon in LCDM limit"
+  gauge:
+    condition: "gauge invariant observables consistent across implementation gauges"
+
+outputs_required:
+  - H_of_z
+  - DM_of_z
+  - DH_of_z
+  - DV_of_z
+  - rd
+  - zdrag
+  - zeq
+  - Pkz
+  - fsigma8_z
+  - sigma8_0
+  - S8
+  - Cl_TT
+  - Cl_TE
+  - Cl_EE
+  - Cl_phiphi
+
+deliverables:
+  - D5.1_solver_Einstein_Boltzmann_TUO
+  - D5.2_validation_suite_TUO_vs_LCDM
+  - D5.3_likelihood_interface_complete
+  - D5.4_technical_documentation
+
+success_criteria:
+  - reproduces_LCDM_limit
+  - produces_all_linear_observables
+  - numerically_stable_over_viable_parameter_space
+  - enables_first_division_data_confrontation
+
+risks:
+  - forced_back_to_near_LCDM_corner
+  - tension_with_full_CMB_or_full_shape_growth
+  - gauge_or_numerical_instabilities
+
+official_statement: >
+  The TUO must be elevated from a compressed cosmological EFT to a complete linear
+  relativistic theory through an Einstein–Boltzmann solver that reproduces LCDM in the
+  appropriate limit and enables precision confrontation with CMB and large-scale structure.
+
+next_wp: WP6
+next_wp_name: growth_weak_lensing_and_S8_tension

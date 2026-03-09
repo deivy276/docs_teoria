@@ -1,0 +1,10 @@
+{
+  "module": "5C.1.1",
+  "lcdm_validation": {
+    "max_rel_D": 0.00027146916682518305,
+    "max_rel_f": 0.0006680687036675886,
+    "sigma8_0_pred_5c11": 0.8105843460372314,
+    "S8_0_pred_5c11": 0.8284893518720822
+  },
+  "note": "Pure module-level validation on synthetic LCDM background; this should be rerun in the user's local environment with real pipeline data."
+}

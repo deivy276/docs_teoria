@@ -1,0 +1,48 @@
+
+wp: WP2
+title: "Prueba de estabilidad y ausencia de fantasmas de la TUO"
+status: "cerrado_parcialmente"
+scope:
+  achieved:
+    - "EFT cosmológica actual"
+  pending:
+    - "completion tensorial UV"
+eft_reference:
+  action: |
+    S_eff = ∫ d^4x √(-g) [ M_Pl^2/2 R - 1/2 (∇φ)^2 - V(φ) ]
+            + S_b[g,ψ_b] + S_r[g,ψ_r] + S_c[e^{2β(φ)} g, ψ_c]
+  potential: "V(φ)=V0 + 1/2 ν^2 φ^2 + λ4/4 φ^4"
+  conformal_coupling: "g̃^(c)_{μν}=exp(2 β(φ)) g_{μν}"
+main_result:
+  statement: "La TUO actual está libre de fantasmas a nivel de EFT cosmológica."
+  reason:
+    - "ecuaciones de segundo orden"
+    - "coeficiente cinético escalar positivo"
+    - "acoplamiento conforme sin derivadas de φ"
+    - "sector tensorial de GR preservado en la EFT"
+dof_count_ir:
+  tensors_gr: 2
+  scalar_tuo: 1
+stability_conditions:
+  - "M_Pl^2 > 0"
+  - "Z(φ) > 0"
+  - "c_s^2 > 0"
+  - "Q_T > 0"
+  - "c_T^2 > 0"
+  - "μ(k,a) > 0"
+  - "m_eff^2 no patológicamente taquiónica"
+radiation_freezing:
+  source_trace: "T = -ρ + 3P"
+  radiation_trace: "T_r = 0"
+  conclusion: "la radiación no fuentea directamente a φ"
+not_proven_yet:
+  - "ghost-freeness de una completion tensorial UV basada en A_{μν}"
+  - "conteo Hamiltoniano completo de \u005c hat A_{μν}"
+  - "eliminación formal de modos vectoriales/escalares extra"
+pending_tasks:
+  D2_2: "acción cuadrática explícita de perturbaciones"
+  D2_3: "análisis ADM/Hamiltoniano del sector tensorial padre"
+success_criterion:
+  partial: "aceptar la TUO como EFT cosmológica sin fantasmas"
+  full: "demostrar o descartar la completion tensorial UV ghost-free"
+recommended_next_wp: "WP3 — derivación del acoplamiento oscuro desde la acción"

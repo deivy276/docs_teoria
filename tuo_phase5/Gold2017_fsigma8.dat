@@ -1,0 +1,19 @@
+# z    fsigma8    error    # Reference
+0.02    0.428      0.0465   # Huchra et al. 2012 (2MRS)
+0.02    0.398      0.065    # Turnbull et al. 2012
+0.02    0.314      0.048    # Davis et al. 2011
+0.10    0.370      0.130    # Feix et al. 2015
+0.15    0.490      0.145    # Howlett et al. 2015
+0.17    0.510      0.060    # Song et al. 2009 (2dFGRS)
+0.18    0.360      0.090    # Blake et al. 2013 (GAMA)
+0.38    0.440      0.060    # Blake et al. 2013 (GAMA)
+0.25    0.3512     0.0583   # Samushia et al. 2012 (SDSS DR7)
+0.37    0.4602     0.0378   # Samushia et al. 2012 (SDSS DR7)
+0.32    0.384      0.095    # Sanchez et al. 2014 (BOSS LOWZ)
+0.59    0.488      0.060    # Chuang et al. 2013 (BOSS CMASS)
+0.44    0.413      0.080    # Blake et al. 2012 (WiggleZ)
+0.60    0.390      0.063    # Blake et al. 2012 (WiggleZ)
+0.73    0.437      0.072    # Blake et al. 2012 (WiggleZ)
+0.60    0.550      0.120    # Pezzotta et al. 2017 (VIPERS)
+0.86    0.400      0.110    # Pezzotta et al. 2017 (VIPERS)
+1.40    0.482      0.116    # Okumura et al. 2016 (FastSound)

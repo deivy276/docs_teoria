@@ -1,0 +1,81 @@
+wp: WP7
+name: "Sector tensorial observacional y objetos compactos de la TUO"
+status: "frozen"
+purpose: >
+  Fijar el marco mínimo con el que la TUO debe confrontar el sector tensorial
+  y la fenomenología de objetos compactos sin introducir todavía una completion
+  tensorial UV completa.
+
+working_hypotheses:
+  H7_1:
+    title: "Sector tensorial mínimo equivalente a GR en IR"
+    statement: >
+      En la rama mínima actual, el sector tensorial propagante coincide con GR a nivel
+      lineal infrarrojo: QT = Mpl^2 > 0, cT^2 = 1 y alpha_T = 0.
+  H7_2:
+    title: "Separación de escalas"
+    statement: >
+      La nueva física del tejido modifica primordialmente background, crecimiento y sector
+      escalar, no el tensorial líder.
+  H7_3:
+    title: "Objetos compactos como deformaciones escalares débiles"
+    statement: >
+      Agujeros negros y estrellas de neutrones se tratan, en primera instancia, como
+      soluciones de GR con posibles correcciones escalares pequeñas.
+
+frozen_tensor_sector:
+  metric_perturbation: "ds^2 = -dt^2 + a^2(t)(delta_ij + h_ij)dx^i dx^j"
+  constraints:
+    - "partial_i h_ij = 0"
+    - "h^i_i = 0"
+  eom: "ddot h_ij + 3H dot h_ij + (k^2/a^2) h_ij = 0"
+  QT: "M_Pl^2"
+  cT2: 1.0
+  alphaT: 0.0
+  tensor_mass_effective: 0.0
+
+compact_objects_policy:
+  black_holes:
+    baseline: "GR/Kerr-Schwarzschild at leading order"
+    extra_hair: "not assumed in minimal branch"
+  neutron_stars:
+    baseline: "TOV standard as first approximation"
+    corrections: "weak scalar corrections only"
+  honesty_policy: >
+    No claim of strong deviations in compact objects until a consistent static/spherical
+    formulation beyond the cosmological EFT is developed.
+
+observables:
+  tensorial:
+    - "GW propagation speed"
+    - "tensor damping"
+    - "ringdown / quasi-normal modes (qualitative at this stage)"
+    - "possible tensor dispersion (frozen to zero in minimal branch)"
+  compact_objects:
+    - "black-hole masses and spins"
+    - "ringdown frequencies"
+    - "neutron-star tidal deformabilities"
+    - "mass-radius relations"
+
+validation_requirements:
+  V7_1: "Recover cT^2 = 1 and QT > 0 in the minimal IR branch"
+  V7_2: "No contradiction with background cosmology already validated in WP0-WP6"
+  V7_3: "Any future tensorial UV completion must connect continuously to this minimal branch"
+
+closes:
+  - "Minimal tensorial observational stance of the TUO"
+  - "Policy for compact-object phenomenology in the minimal branch"
+  - "Restriction that new cosmological physics resides mainly in scalar/dark sector"
+
+does_not_close:
+  - "UV tensorial completion"
+  - "Quasi-normal modes full calculation"
+  - "Black-hole or neutron-star dedicated TUO solver"
+  - "Nonlinear GW phenomenology"
+
+official_statement: >
+  The TUO, in its currently validated minimal cosmological branch, preserves the IR
+  tensor sector of GR and shifts its new physics to the scalar/dark sector; compact objects
+  and gravitational waves are treated, for now, as consistency tests that the theory must not contradict.
+
+next_wp: "WP8 — estabilidad cuántica y naturalidad de la TUO"

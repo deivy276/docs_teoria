@@ -1,0 +1,72 @@
+wp: WP4
+name: sector_primordial_TUO
+status: frozen_reference_effective_formulation
+objective: >
+  Cerrar el sector primordial de la TUO al nivel necesario para una EFT cosmológica
+  seria, sin reclamar todavía una teoría inflacionaria/fundamental completa del tejido.
+
+reference_branch:
+  primordial_mode: adiabatic
+  gaussianity: nearly_gaussian
+  scale_invariance: nearly_scale_invariant
+  pivot_k_Mpc_inv: 0.05
+  alpha_s: 0.0
+  r: 0.0
+  fnl: 0.0
+
+primordial_spectrum:
+  scalar_curvature:
+    formula: "P_R(k) = A_s * (k/k_*)^(n_s - 1 + 0.5 * alpha_s * ln(k/k_*))"
+    active_parameters:
+      - A_s
+      - n_s
+      - alpha_s
+
+field_sector:
+  scalar_field: phi
+  effective_equation: "ddot(phi) + 3H dot(phi) + V_phi = alpha(phi) rho_c"
+  dark_coupling: "Q = alpha(phi) dot(phi) rho_c"
+  radiation_trace:
+    formula: "T_r = -rho_r + 3 P_r"
+    value_in_radiation_era: 0.0
+  consequence: "radiative_locking_of_phi"
+
+initial_conditions:
+  isocurvature:
+    S_bc: 0.0
+    S_rphi: 0.0
+    S_cphi: 0.0
+  convention: "pure_adiabatic_branch"
+  delta_phi_ini_policy: "no_independent_primordial_isocurvature_mode"
+
+growth_normalization:
+  principle: "A_s_to_sigma8_prediction"
+  current_scheme: hybrid_reference_LCDM_matching
+  formula: >
+    sigma8_TUO = sigma8_ref(h, omega_b, omega_c, A_s, n_s) *
+    D_TUO(z_match -> 0) / D_LCDM(z_match -> 0)
+  consistency_requirement: "sigma8_TUO -> sigma8_LCDM when beta0 -> 0 and phi freezes"
+
+claims:
+  yes:
+    - "TUO preserves early-universe consistency at EFT level"
+    - "radiation does not directly source phi because T_r = 0"
+    - "TUO can propagate a standard primordial seed into late-time observables"
+    - "LCDM is recovered as primordial effective limit"
+  no:
+    - "No unique primordial generation mechanism is yet derived from the tissue"
+    - "No inflationary completion specific to TUO is yet fixed"
+    - "No robust prediction yet for r or primordial non-Gaussianity"
+
+closure_level:
+  level_A: "effective primordial closure achieved"
+  level_B: "full Einstein-Boltzmann implementation pending"
+  level_C: "fundamental primordial completion of TUO pending"
+
+official_statement: >
+  The current primordial sector of the TUO is frozen as a conservative effective closure:
+  standard adiabatic primordial seed, natural radiative locking of the tissue field,
+  and late-time growth normalized consistently from A_s.
+
+next_wp: WP5
+next_wp_name: Einstein_Boltzmann_complete_implementation

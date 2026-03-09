@@ -1,0 +1,62 @@
+wp6:
+  status: frozen_reference
+  title: growth_weak_lensing_S8
+  objective:
+    - test_growth_consistency
+    - test_weak_lensing_consistency
+    - assess_S8_tension_response
+  input_theory:
+    eft_reference: WP0
+    dark_coupling: WP3
+    primordial_closure: WP4
+    linear_solver_target: WP5
+  observables:
+    growth:
+      - D_z
+      - f_z
+      - fsigma8_z
+    lensing:
+      - Sigma_k_a
+      - C_ell_kappakappa
+      - xi_plus
+      - xi_minus
+    combined:
+      - sigma8
+      - S8
+      - Omega_m_S8_plane
+  assumptions:
+    first_pass:
+      eta_k_a: 1.0
+      Sigma_equals_mu: true
+    scale_dependence:
+      mu_k_a: 1 + 2*beta0^2*k^2/(k^2 + a^2*m_eff^2)
+  datasets:
+    stage_A:
+      - compressed_fs8
+      - compressed_S8
+    stage_B:
+      - weak_lensing_2pt_public
+    stage_C:
+      - stage_IV_forecasts
+  scientific_questions:
+    - can_TUO_reduce_S8_tension
+    - is_beta0_preferred_by_growth_and_WL
+    - does_TUO_predict_distinct_fs8_shape
+    - does_TUO_improve_joint_consistency_vs_LCDM
+  success_criteria:
+    scenario_A: TUO_improves_S8_tension_without_ruining_background
+    scenario_B: TUO_matches_LCDM_consistently_as_generalized_limit
+    scenario_C: TUO_is_constrained_to_LCDM_like_corner_usefully
+  risks:
+    - growth_improvement_costs_background
+    - Sigma_needs_more_general_form
+    - no_unique_observational_signature
+  deliverables:
+    - compressed_growth_S8_likelihood
+    - weak_lensing_module
+    - joint_SN_BAO_growth_WL_pipeline
+    - Omega_m_S8_prediction_plane
+  frozen_strategy:
+    - start_with_compressed_growth_and_S8
+    - move_to_WL_2pt_next
+    - full_shape_after_linear_sector_is_closed
