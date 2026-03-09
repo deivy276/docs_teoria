@@ -1,0 +1,99 @@
+wp: WP10
+title: Tests observacionales de falsabilidad de la TUO
+status: frozen
+scope: observacional
+objective: >
+  Ejecutar tests observacionales capaces de discriminar, colapsar o falsar la rama mínima
+  interactuante de la TUO mediante una combinación de expansión, crecimiento y weak lensing.
+
+core_hypothesis: >
+  La firma observacional distintiva de la rama mínima de la TUO no es un único observable,
+  sino una modificación correlacionada y tardía de H(z), fσ8(z) y weak lensing, manteniendo
+  sector tensorial estándar e invisibilidad temprana del tejido.
+
+frozen_tests:
+  T10_1:
+    name: test_sectores_beta
+    description: comparar sectores beta0 > 0, beta0 < 0 y beta0 libre
+    metrics: [delta_chi2, delta_chi2_eff, delta_AIC, delta_BIC, bayes_factor_optional]
+
+  T10_2:
+    name: test_colapso_lcdm
+    description: verificar si la rama interactuante colapsa de facto al límite LCDM
+    collapse_conditions:
+      - beta0_to_zero
+      - x_ini_to_zero
+      - delta_AIC_gt_0
+      - delta_BIC_gt_0
+
+  T10_3:
+    name: test_joint_background_growth_lensing
+    likelihood: [SN, BAO, RSD, WL]
+    goal: consistencia conjunta de expansión, crecimiento y lensing
+
+  T10_4:
+    name: test_S8_Omega_m_plane
+    observable: S8
+    definition: sigma8 * sqrt(Omega_m/0.3)
+    goal: evaluar alivio o empeoramiento de tension S8
+
+  T10_5:
+    name: test_eta_equals_one
+    frozen_relation:
+      eta: 1
+      Sigma_equals_mu: true
+    falsation_trigger: eta_observed_not_equal_one
+
+  T10_6:
+    name: test_shape_fs8
+    goal: comparar forma y amplitud de fs8(z) contra banda LCDM y datos RSD
+
+  T10_7:
+    name: test_naturalidad_observacional
+    metrics: [chi2_total, chi2_prior, delta_chi2_eff, delta_AIC, delta_BIC]
+    goal: evitar mejoras aparentes compradas con desplazamientos patológicos en priors
+
+minimum_outputs:
+  - H_of_z
+  - DM_DH_DV
+  - fs8_of_z
+  - sigma8
+  - S8
+  - delta_chi2
+  - delta_chi2_eff
+  - delta_AIC
+  - delta_BIC
+  - bands_in_Omega_m_S8_plane
+
+minimum_datasets:
+  - SN
+  - BAO
+  - RSD
+  - WL_when_available
+
+allowed_outcomes:
+  A: supervivencia_fuerte
+  B: supervivencia_debil
+  C: colapso_a_LCDM
+  D: falsacion_rama_minima
+
+formal_falsation_criteria:
+  F1: eta_observed_not_equal_one
+  F2: no_joint_region_for_SN_BAO_RSD_WL
+  F3: full_collapse_to_LCDM_with_no_information_gain
+  F4: incompatible_tensorial_signal
+
+deliverables:
+  D10_1: tabla_comparativa_LCDM_vs_TUO_sectorial
+  D10_2: plots_fs8_Omega_m_S8_corner_Hz
+  D10_3: documento_resultado_observacional_rama_minima
+
+closure_questions:
+  - exists_nontrivial_beta_region
+  - acceptable_information_penalty
+  - branch_status_favored_viable_collapsed_falsified
+
+official_statement: >
+  La rama mínima interactuante de la TUO debe juzgarse por su capacidad para describir
+  de forma correlacionada la expansión, el crecimiento y el weak lensing sin colapsar
+  al límite LCDM ni pagar un coste de complejidad injustificable.
